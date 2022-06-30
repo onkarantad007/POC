@@ -1,0 +1,41 @@
+multicache:
+  caches:
+    dedupCache:
+       name: DEDUP_SSI #redis cache name
+       sql: select * from  DATAONE_DEV.kafkaoa.Input_CMS_SSI_DEDUP_test2
+       #sql: select * from DATAONE_DEV.SSI_REDIS.Input_CMS_Dedup_new
+       preLoad: LOAD_TYPE = 'Pre_Load'
+       microBatch: LOAD_TYPE IS NULL
+       logTable: DATAONE_DEV_NEW.SI_AUDIT_SSI_ABSA.REDIS_LOG
+       enableInd: 'true'
+    lookupCache:
+      - 
+         name: MST_TABLE_VAL_LIST_TEMP
+         sql: select * from DATAONE_DEV_NEW.si_core_dwh.MST_TABLE_VAL_LIST_TEMP
+         key: MST_TBL_VAL_SEQ_ID:MST_TBL_SI_CD
+         value: MST_VAL_SI_DESC:MST_VAL_LONG_DESC
+         clearMap: 'true'
+      - 
+         name: DATAONE_DEV.kafkaoa.employee
+         sql: select * from DATAONE_DEV.kafkaoa.employee left join DATAONE_DEV.kafkaoa.employeeId on employee.ID=employeeId.id;
+         key: employee.ID:employee.EMAIL
+         value: employeeId.FULL_NAME:employee.FULL_NAME
+         clearMap: 'false'
+#      map3:
+#        name: SSI_AUDIT_GPF.SSI_CMS_CS_ONKAR_R
+#        sql: select * from SSI_AUDIT_GPF.SSI_CMS_CS_ONKAR_R
+#        key: ENTITY_FULL_NM:ADDRESS
+#        value: CE_ID
+#        clearMap: 'true'
+#      map4:
+#        name: SI_CORE_DWH.USER_DETAILS
+#        sql: select * from SI_CORE_DWH.USER_DETAILS
+#        key: SI_CORE_DWH.USER_DETAILS.COMPANY_ID:SI_CORE_DWH.USER_DETAILS.USER_NUM
+#        value: SI_CORE_DWH.USER_DETAILS.USER_ID
+#        clearMap: 'true'
+#      map5:
+#        name: SI_CORE_DWH.USER_DETAILS
+#        sql: select * from SI_CORE_DWH.USER_DETAILS
+#        key: SI_CORE_DWH.USER_DETAILS.COMPANY_ID:SI_CORE_DWH.USER_DETAILS.LAST_UPDATE_DATE
+#        value: SI_CORE_DWH.USER_DETAILS.USER_ID
+#        clearMap: 'true'

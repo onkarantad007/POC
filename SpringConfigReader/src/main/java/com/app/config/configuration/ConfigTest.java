@@ -15,6 +15,8 @@ public class ConfigTest implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
+		// reading configuration
+		
 		multiCache.getLookupCache().stream().forEach(i->{
 			System.out.println("lookup-> "+i.getName());
 		});

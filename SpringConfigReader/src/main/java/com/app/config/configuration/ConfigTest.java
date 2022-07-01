@@ -22,6 +22,8 @@ public class ConfigTest implements CommandLineRunner{
 		});
 		
 		System.out.println("dedup-> "+multiCache.getDedupCache().getPreLoad());
+		
+		System.out.println("dedupTestList-> "+multiCache.getDedupCache().getTestList());
 
 		
 	}

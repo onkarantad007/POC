@@ -1,7 +1,5 @@
 package com.app.config.configuration.configPojo;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 import lombok.Getter;
@@ -12,12 +10,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class DedupParam {
-	String name;
-	String sql;
-	String preLoad;
-	String microBatch;
-	String logTable;
-	Boolean enableInd;
-	List<ListParam> testList;
+public class ListParam {
+	String l1;
+	String l2;
 }

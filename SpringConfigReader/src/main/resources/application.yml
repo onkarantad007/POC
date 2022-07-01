@@ -8,6 +8,13 @@ multicache:
        microBatch: LOAD_TYPE IS NULL
        logTable: DATAONE_DEV_NEW.SI_AUDIT_SSI_ABSA.REDIS_LOG
        enableInd: 'true'
+       testList:
+        -
+         l1: list11
+         l2: list12
+        -
+         l1: list21
+         l2: list21
     lookupCache:
       - 
          name: MST_TABLE_VAL_LIST_TEMP
